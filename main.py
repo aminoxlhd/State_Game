@@ -16,10 +16,10 @@ while len(guessed_states) < 50:
     if answer_state in guessed_states:
         pass
     elif answer_state == "Exit":
-        state_to_learn = []
-        for state in all_states:
-            if state not in guessed_states:
-                state_to_learn.append(state)
+        state_to_learn = [state for state in all_states if state not in guessed_states]
+        #for state in all_states:
+        #    if state not in guessed_states:
+        #        state_to_learn.append(state)
         new_data = pandas.DataFrame(state_to_learn)
         new_data.to_csv("state_to_learn.csv")
         break
